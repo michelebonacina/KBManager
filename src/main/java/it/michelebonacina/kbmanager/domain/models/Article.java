@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * Article topic type
+ * Article topic type.
  * 
  * @author Michele Bonacina
  * @version 0.0.1.

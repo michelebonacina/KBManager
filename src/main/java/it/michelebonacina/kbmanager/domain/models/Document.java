@@ -16,8 +16,11 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class Document extends Topic {
 
-	public Document(String title, String description, TopicType type, Set<Tag> tags) {
+	DocumentFormat format;
+
+	public Document(String title, String description, TopicType type, Set<Tag> tags, DocumentFormat format) {
 		super(title, description, type, tags);
+		this.format = format;
 	}
 
 }
