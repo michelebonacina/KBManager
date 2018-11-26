@@ -1,13 +1,11 @@
-package it.michelebonacina.kbmanager.domain.models;
+package it.michelebonacina.kbmanager.domain.viewmodels;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Main topic. Topic contains the common data for all type of information that
@@ -19,15 +17,15 @@ import lombok.Setter;
  */
 @Data
 @AllArgsConstructor
-public abstract class Topic {
+public abstract class TopicViewModel {
 
 	String title;
 
 	String description;
 
-	@Setter(AccessLevel.NONE)
-	TopicType type;
+	@Getter
+	TopicTypeViewModel type;
 
-	Set<Tag> tags = new HashSet<Tag>();
+	Set<TagViewModel> tags = new HashSet<TagViewModel>();
 
 }
