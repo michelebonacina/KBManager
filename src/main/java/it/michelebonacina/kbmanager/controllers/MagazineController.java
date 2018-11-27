@@ -1,15 +1,14 @@
 package it.michelebonacina.kbmanager.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletResponse;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import it.michelebonacina.kbmanager.services.MagazineService;
 import it.michelebonacina.kbmanager.viewmodels.MagazineViewModel;
 
 /**
@@ -25,12 +24,13 @@ import it.michelebonacina.kbmanager.viewmodels.MagazineViewModel;
 @RequestMapping("/api/magazine")
 public class MagazineController {
 
+	@Autowired
+	MagazineService magazineService;
+
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping(value = "/all")
-	public List<MagazineViewModel> findAll() {
-		List<MagazineViewModel> magazineList = new ArrayList<MagazineViewModel>();
-		magazineList.add(new MagazineViewModel("IoProgrammo", 2018, 2, 223, "Edizioni Master", 74));
-		magazineList.add(new MagazineViewModel("IoProgrammo", 2018, 1, 222, "Edizioni Master", 74));
+	public List<MagazineViewModel> listAllMagazines() {
+		List<MagazineViewModel> magazineList = magazineService.getAllMagazines();
 		return magazineList;
 	}
 

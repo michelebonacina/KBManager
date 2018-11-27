@@ -1,6 +1,9 @@
 spring:
   data:
     mongodb:
-      database: kbanager
+      database: kbmanager
       host: localhost
       port: 27017
+logging:
+  level:
+    org.springframework.data: DEBUG
