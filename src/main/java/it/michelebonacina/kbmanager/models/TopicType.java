@@ -1,4 +1,4 @@
-package it.michelebonacina.kbmanager.domain.models;
+package it.michelebonacina.kbmanager.models;
 
 /**
  * Main topic types. There're several specialization of standard topics. Here

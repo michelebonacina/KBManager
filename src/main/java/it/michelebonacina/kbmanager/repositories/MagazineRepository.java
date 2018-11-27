@@ -1,9 +1,9 @@
-package it.michelebonacina.kbmanager.domain.repositories;
+package it.michelebonacina.kbmanager.repositories;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
-import it.michelebonacina.kbmanager.domain.models.Magazine;
+import it.michelebonacina.kbmanager.models.Magazine;
 
 /**
  * Magazine persistence management.

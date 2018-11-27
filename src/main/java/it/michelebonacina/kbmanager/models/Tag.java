@@ -1,10 +1,11 @@
-package it.michelebonacina.kbmanager.domain.models;
+package it.michelebonacina.kbmanager.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
- * Document format type.
+ * Topic classification tag. Each topic could be associated to one or more
+ * classification tag.
  * 
  * @author Michele Bonacina
  * @version 0.0.1.
@@ -12,7 +13,7 @@ import lombok.Data;
  */
 @Data
 @AllArgsConstructor
-public class DocumentFormat {
+public class Tag {
 
 	String value;
 

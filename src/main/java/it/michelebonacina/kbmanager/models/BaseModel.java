@@ -1,4 +1,4 @@
-package it.michelebonacina.kbmanager.domain.models;
+package it.michelebonacina.kbmanager.models;
 
 import java.io.Serializable;
 

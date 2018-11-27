@@ -1,4 +1,4 @@
-package it.michelebonacina.kbmanager.domain.viewmodels;
+package it.michelebonacina.kbmanager.viewmodels;
 
 /**
  * Main topic types. There're several specialization of standard topics. Here

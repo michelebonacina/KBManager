@@ -1,4 +1,4 @@
-package it.michelebonacina.kbmanager.domain.controllers;
+package it.michelebonacina.kbmanager.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import it.michelebonacina.kbmanager.domain.viewmodels.MagazineViewModel;
+import it.michelebonacina.kbmanager.viewmodels.MagazineViewModel;
 
 /**
  * Magazine REST Controller. This controller expose all REST methods for

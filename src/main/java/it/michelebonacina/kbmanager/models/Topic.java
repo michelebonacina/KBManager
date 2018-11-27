@@ -1,4 +1,4 @@
-package it.michelebonacina.kbmanager.domain.models;
+package it.michelebonacina.kbmanager.models;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,4 +1,4 @@
-package it.michelebonacina.kbmanager.domain.viewmodels;
+package it.michelebonacina.kbmanager.viewmodels;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
