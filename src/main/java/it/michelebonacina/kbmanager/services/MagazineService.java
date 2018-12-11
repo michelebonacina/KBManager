@@ -27,12 +27,22 @@ public class MagazineService {
 	MagazineConverter magazineConverter;
 
 	public List<MagazineViewModel> getAllMagazines() {
-		List<MagazineViewModel> magazines = null;
 		// get magazines from repository
 		List<Magazine> magazineList = this.magazineRepository.findAll();
 		// converts magazine for user interface
-		magazines = magazineConverter.toViewModelList(magazineList);
+		List<MagazineViewModel> magazines = this.magazineConverter.toViewModelList(magazineList);
 		// done
 		return magazines;
-	}
+	} // getAllMagazines
+	
+	public MagazineViewModel createMagazine(MagazineViewModel magazineViewModel) {
+		// get magazine from view model
+		Magazine magazine = this.magazineConverter.toModel(magazineViewModel);
+		// save magazine
+		magazine = this.magazineRepository.save(magazine);
+		// convert magazine for user interface
+		magazineViewModel = this.magazineConverter.toViewModel(this.magazineRepository.save(magazine));
+		// done
+		return magazineViewModel;
+	} // createMagazine
 }

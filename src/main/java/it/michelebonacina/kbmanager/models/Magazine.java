@@ -2,9 +2,9 @@ package it.michelebonacina.kbmanager.models;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 /**
  * Simple magazine.
@@ -14,13 +14,13 @@ import lombok.EqualsAndHashCode;
  * @since 0.0.1.
  */
 @Data
-@AllArgsConstructor
+@NoArgsConstructor
 @Document(collection = "magazines")
 @EqualsAndHashCode(callSuper = true)
 public class Magazine extends BaseModel {
 
 	private static final long serialVersionUID = -7890502977279791012L;
-
+	
 	String title;
 
 	Integer year;

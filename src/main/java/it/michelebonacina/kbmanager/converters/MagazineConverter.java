@@ -13,10 +13,16 @@ public class MagazineConverter implements ModelXViewModelConverter<Magazine, Mag
 
 	@Override
 	public Magazine toModel(MagazineViewModel viewModel) {
-		Magazine magazine = new Magazine(viewModel.getTitle(), viewModel.getYear(), viewModel.getMonth(),
-				viewModel.getNumber(), viewModel.getEditor(), viewModel.getPages());
+		Magazine magazine = new Magazine();
+		magazine.setId(viewModel.getId());
+		magazine.setTitle(viewModel.getTitle());
+		magazine.setNumber(viewModel.getNumber());
+		magazine.setYear(viewModel.getYear());
+		magazine.setMonth(viewModel.getMonth());
+		magazine.setPages(viewModel.getPages());
+		magazine.setEditor(viewModel.getEditor());
 		return magazine;
-	}
+	} // toModel
 
 	@Override
 	public List<Magazine> toModelList(List<MagazineViewModel> viewModelList) {
@@ -25,14 +31,20 @@ public class MagazineConverter implements ModelXViewModelConverter<Magazine, Mag
 			magazines.add(this.toModel(magazineViewModel));
 		}
 		return magazines;
-	}
+	} // toModelList
 
 	@Override
 	public MagazineViewModel toViewModel(Magazine model) {
-		MagazineViewModel magazineViewModel = new MagazineViewModel(model.getTitle(), model.getYear(), model.getMonth(),
-				model.getNumber(), model.getEditor(), model.getPages());
+		MagazineViewModel magazineViewModel = new MagazineViewModel();
+		magazineViewModel.setId(model.getId());
+		magazineViewModel.setTitle(model.getTitle());
+		magazineViewModel.setNumber(model.getNumber());
+		magazineViewModel.setYear(model.getYear());
+		magazineViewModel.setMonth(model.getMonth());
+		magazineViewModel.setPages(model.getPages());
+		magazineViewModel.setEditor(model.getEditor());
 		return magazineViewModel;
-	}
+	} // toViewModel
 
 	@Override
 	public List<MagazineViewModel> toViewModelList(List<Magazine> modelList) {
@@ -41,6 +53,6 @@ public class MagazineConverter implements ModelXViewModelConverter<Magazine, Mag
 			magazineViewModels.add(this.toViewModel(magazine));
 		}
 		return magazineViewModels;
-	}
+	} // toViewModelList
 
-}
+} // MagazineConverter

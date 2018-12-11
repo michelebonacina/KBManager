@@ -1,7 +1,7 @@
 package it.michelebonacina.kbmanager.viewmodels;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * Simple magazine.
@@ -12,8 +12,10 @@ import lombok.Data;
  *
  */
 @Data
-@AllArgsConstructor
+@NoArgsConstructor
 public class MagazineViewModel {
+	
+	String id;
 
 	String title;
 
