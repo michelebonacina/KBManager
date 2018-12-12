@@ -1,18 +1,21 @@
 package it.michelebonacina.kbmanager.controllers;
 
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import it.michelebonacina.kbmanager.converters.MagazineConverter;
+import it.michelebonacina.kbmanager.models.Magazine;
 import it.michelebonacina.kbmanager.services.MagazineService;
 import it.michelebonacina.kbmanager.viewmodels.MagazineViewModel;
 
@@ -31,25 +34,45 @@ public class MagazineController {
 
 	@Autowired
 	MagazineService magazineService;
+	
+	@Autowired
+	MagazineConverter magazineConverter;
 
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping(value = "/all")
 	public ResponseEntity<List<MagazineViewModel>> listAllMagazines() {
 		// search all magazines
-		List<MagazineViewModel> magazineList = this.magazineService.getAllMagazines();
+		List<Magazine> magazines = this.magazineService.getAllMagazines();
+		// converts magazine for user interface
+		List<MagazineViewModel> magazineList = this.magazineConverter.toViewModelList(magazines);
 		// done
-		return new ResponseEntity<List<MagazineViewModel>>(magazineList, HttpStatus.OK);
+		return ResponseEntity.status(HttpStatus.OK).body(magazineList);
 	} // listAllMagazines
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping	
 	public ResponseEntity<MagazineViewModel> newMagazine(@RequestBody MagazineViewModel magazineViewModel) {
-		// set new id
-		magazineViewModel.setId(UUID.randomUUID().toString());
-		// save magazine
-		magazineViewModel = this.magazineService.createMagazine(magazineViewModel);
+		// get magazine from view model
+		Magazine magazine = this.magazineConverter.toModel(magazineViewModel);
+		// create a new magazine
+		magazine = this.magazineService.createMagazine(magazine);
+		// convert magazine for user interface
+		magazineViewModel = this.magazineConverter.toViewModel(magazine);
 		// done
-		return new ResponseEntity<MagazineViewModel>(magazineViewModel, HttpStatus.CREATED);
+		return ResponseEntity.status(HttpStatus.CREATED).body(magazineViewModel);
+	} // newMagazine
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@PutMapping(value = "/{id}")	
+	public ResponseEntity<MagazineViewModel> updateMagazine(@PathVariable("id") String id, @RequestBody MagazineViewModel magazineViewModel) {
+		// get magazine from view model
+		Magazine magazine = this.magazineConverter.toModel(magazineViewModel);
+		// update existing magazine
+		magazine = this.magazineService.updateMagazine(id, magazine);
+		// convert magazine for user interface
+		magazineViewModel = this.magazineConverter.toViewModel(magazine);
+		// done
+		return ResponseEntity.status(HttpStatus.OK).body(magazineViewModel);
 	} // newMagazine
 
 } // MagazineCnontroller
